@@ -1,0 +1,7 @@
+{"type":"pickacard",
+ "hook":["Pick a card.","Your message is waiting."],
+ "piles":[
+  {"numeral":"VI","name":"THE LOVERS","symbol":"heart","messages":[["A choice of the heart"],["Follow what feels","like home."]]},
+  {"numeral":"X","name":"WHEEL OF FORTUNE","symbol":"wheel","messages":[["Things are turning"],["Your luck is","shifting this week."]]},
+  {"numeral":"XVIII","name":"THE MOON","symbol":"moon","messages":[["Trust your intuition"],["The answer is","already in you."]]}],
+ "cta":["Which one did you pick?","Comment 1, 2 or 3"]}

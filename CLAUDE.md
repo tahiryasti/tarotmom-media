@@ -40,3 +40,14 @@ Instagram fetches each video from the raw GitHub URL
      the toast "Video published" confirms it.
    - If the computer or browser can't be reached, or TikTok asks to log in, skip TikTok and tell Tahir.
 8. Tell Tahir in Turkish what was posted where.
+
+## Pick-a-card routine (Mon / Wed / Fri, from 2026-12-03)
+Part of the 90-day growth roadmap (Claude Doc "90 Günlük Büyüme Yol Haritası"). Runs in addition to the daily card.
+1. Choose 3 different tarot cards (none used in the daily videos of the last 7 days or the last pick-a-card). One theme per video, rotating: general message, love, career/purpose, "what you need to hear", the week ahead.
+2. Write `specs/<date>-pick.json` (see `specs/example-pick.json`):
+   `{"type":"pickacard","hook":[2 lines],"piles":[{"numeral","name","symbol","messages":[[1 line],[1–2 lines]]} x3],"cta":["Which one did you pick?","Comment 1, 2 or 3"]}`
+   Same text rules as the daily card (English, warm, ≤28 chars per line, no health/money/legal/guaranteed predictions). Vary the hook each time.
+3. Render: `tools/render_pickacard.sh specs/<date>-pick.json videos/<date>-pick.mp4` (26 s).
+4. Commit + push, wait ~30 s, post to Instagram (Windsor.ai `create_video_post`, video_url `.../videos/<date>-pick.mp4`) and TikTok exactly as in steps 5 and 7 above.
+   Caption: the hook, "Pause and pick 1, 2 or 3 — then watch your card", the 3 card names, "Comment your number below 👇", then ~8 hashtags (#pickacard #tarotreading #tarot #pickacardreading #tarotcommunity #spiritualtok #tarotmom #dailytarot).
+5. Append `- <date> | PICK: <CARD1> / <CARD2> / <CARD3> | <IG media id> , TikTok posted/skipped` to `posted.md`, commit + push.
