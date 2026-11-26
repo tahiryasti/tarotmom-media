@@ -23,4 +23,20 @@ Instagram fetches each video from the raw GitHub URL
    call to action, then ~8 hashtags such as #tarot #tarotreading #dailytarot #cardoftheday #pickacard
    #spiritualtok #manifestation #tarotmom).
 6. Append a line to `posted.md`: `- <date> | <CARD NAME> | <media id or error>`, commit and push.
-7. Send Tahir the video file and the caption so he can also upload it to TikTok.
+7. Post the same video on TikTok (account tarotmomdaily, already signed in) through the built-in browser
+   on Tahir's computer (mcp__remote-devices__Claude_Browser__browser_repl). What works (2026-11-25):
+   - In a github.com tab (e.g. https://github.com/tahiryasti/tarotmom-media), `page.evaluate` a
+     `fetch("/tahiryasti/tarotmom-media/raw/main/videos/<date>.mp4")`, base64 it and keep it in
+     `window.__b64`; read it back into the REPL in 500,000-character slices. (TikTok's own page cannot
+     fetch the file: its CSP blocks it. raw.githubusercontent.com pages block fetch too.)
+   - Open https://www.tiktok.com/tiktokstudio/upload, wait for `input[type="file"]`, push the base64 into
+     the page in slices of at most 140,000 characters (evaluate arguments are capped at 150,000), then
+     build a File, put it on the input with a DataTransfer and dispatch `change`.
+   - If a "Turn on automatic content checks?" dialog appears, press **Cancel** (do not change account
+     settings). Press "Got it" on tips.
+   - Caption: focus the first `[contenteditable="true"]`, put the caret at the end with a Range, press
+     Backspace until it is empty (the field starts with the file name), then `keyboard.insertText` the
+     caption, press Escape. Leave "When to post: Now" and "Everyone". Click the button named "Post";
+     the toast "Video published" confirms it.
+   - If the computer or browser can't be reached, or TikTok asks to log in, skip TikTok and tell Tahir.
+8. Tell Tahir in Turkish what was posted where.
